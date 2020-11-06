@@ -1,0 +1,25 @@
+.search__submit {
+    display: flex;
+    width: 100px;
+    height: 42px;
+    margin-left: auto;
+    background-color: #2557A7;
+    color: #FFF;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 38px;
+    border-radius: 10px;
+    transition: .2s ease;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+}
+
+.search__submit:hover {
+    background-color: #0A4097;
+}
+
+.search__submit:focus {
+    outline: none;
+}
