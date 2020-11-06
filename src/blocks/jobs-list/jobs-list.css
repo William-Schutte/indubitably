@@ -1,0 +1,17 @@
+@import url('./__item/jobs-list__item.css');
+@import url('./__link/jobs-list__link.css');
+@import url('./__loc/jobs-list__loc.css');
+@import url('./__name/jobs-list__name.css');
+@import url('./__salary/jobs-list__salary.css');
+
+.jobs-list {
+    grid-area: list;
+    height: 300px;
+    padding: 8px 16px 16px;
+    box-sizing: border-box;
+    border: 1px solid #6b6b6b;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}

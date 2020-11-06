@@ -1,0 +1,9 @@
+@import url('./result-block/result-block.css');
+
+.result-blocks {
+    grid-area: blocks;
+    display: flex;
+    flex-direction: column;
+    height: 740px;
+    overflow: scroll;
+}

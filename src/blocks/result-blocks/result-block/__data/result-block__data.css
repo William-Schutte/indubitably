@@ -1,0 +1,4 @@
+.result-block__data {
+    display: grid;
+    grid-template-columns: 42% 58%;
+}

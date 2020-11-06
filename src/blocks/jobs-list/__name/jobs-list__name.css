@@ -1,0 +1,10 @@
+.jobs-list__name {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-right: 4px;
+    width: 55%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
