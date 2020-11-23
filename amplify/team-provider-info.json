@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-indubitably-dev-93314-authRole",
+      "UnauthRoleArn": "arn:aws:iam::314127145276:role/amplify-indubitably-dev-93314-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::314127145276:role/amplify-indubitably-dev-93314-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-indubitably-dev-93314-deployment",
+      "UnauthRoleName": "amplify-indubitably-dev-93314-unauthRole",
+      "StackName": "amplify-indubitably-dev-93314",
+      "StackId": "arn:aws:cloudformation:us-east-1:314127145276:stack/amplify-indubitably-dev-93314/e0b661e0-2d98-11eb-beb4-0e03ee49136b",
+      "AmplifyAppId": "d1hwmcnr3mtdad"
+    }
+  }
+}
