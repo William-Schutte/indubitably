@@ -1,8 +1,0 @@
-@import url('./__button/header__button.css');
-@import url('./__button/_right/header__button_right.css');
-@import url('./__logo/header__logo.css');
-
-.header {
-    display: flex;
-    margin: 16px 0 16px;
-}

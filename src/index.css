@@ -1,10 +1,2 @@
 @import url('./vendor/reset.css');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Nunito:wght@800&display=swap');
-@import url('./blocks/page/page.css');
-@import url('./blocks/header/header.css');
-@import url('./blocks/main/main.css');
-@import url('./blocks/search/search.css');
-@import url('./blocks/content/content.css');
-@import url('./blocks/map/map.css');
-@import url('./blocks/jobs-list/jobs-list.css');
-@import url('./blocks/result-blocks/result-blocks.css');

@@ -1,8 +1,0 @@
-.jobs-list__loc {
-    font-size: 14px;
-    width: 15%;
-    overflow: hidden;
-    margin: auto 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}

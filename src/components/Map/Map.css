@@ -1,0 +1,12 @@
+.map {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #6B6B6B;
+  box-sizing: border-box;
+  grid-area: map;
+}
+
+.map__outline {
+  width: 100%;
+}

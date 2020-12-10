@@ -1,8 +1,0 @@
-.jobs-list__salary {
-    font-size: 14px;
-    width: 25%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin: auto 0;
-}

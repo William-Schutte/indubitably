@@ -1,0 +1,71 @@
+.jobs-list {
+  grid-area: list;
+  height: 100%;
+  padding: 8px 16px 16px;
+  box-sizing: border-box;
+  border: 1px solid #6b6b6b;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.jobs-list__item {
+  width: 100%;
+  padding: 4px 0;
+  display: flex;
+  color: #000;
+  text-decoration: none;
+  transition: .3s ease;
+}
+
+.jobs-list__item:hover {
+  color: #555;
+}
+
+.jobs-list__link {
+  margin-left: auto;
+  position: relative;
+  right: 14px;
+  background-image: url('../../images/link-icon.svg');
+  height: 100%;
+  width: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.jobs-list__item:hover .jobs-list__link {
+  opacity: .8;
+  right: 0;
+}
+
+.jobs-list__loc {
+  font-size: 14px;
+  width: 15%;
+  overflow: hidden;
+  margin: auto 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.jobs-list__name {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-right: 4px;
+  width: 55%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.jobs-list__salary {
+  font-size: 14px;
+  width: 25%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: auto 0;
+}

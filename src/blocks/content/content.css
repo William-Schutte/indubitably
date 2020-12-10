@@ -1,9 +1,0 @@
-.content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: min-content min-content;
-    grid-template-areas: 
-        "map blocks"
-        "list blocks";
-    gap: 20px 20px;
-}
