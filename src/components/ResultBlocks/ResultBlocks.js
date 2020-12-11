@@ -1,110 +1,60 @@
 import React from 'react';
 import './ResultBlocks.css'
 
-function ResultBlocks() {
+function ResultBlocks({ results, loading }) {
     return (
-        <div className="result-blocks">
+        <section className="result-blocks">
+            {loading && (
             <div className="result-block">
                 <div className="result-block__header">
-                    <h2 className="result-block__title">Javascript Developer</h2>
+                    <h2 className="result-block__title">Loading Job Data</h2>
                     <label className="result-block__toggle">
                         <input className="result-block__toggle-input" type="checkbox" />
                         <span className="result-block__toggle-slider"></span>
                     </label>
                 </div>
                 <div className="result-block__data">
+                    <i className="result-block__loader"></i>
+                    <h3 className="result-block__stat">Entry Level</h3>
+                    <p className="result-block__result"></p>
+                    <h3 className="result-block__stat">Newly Posted</h3>
+                    <p className="result-block__result"></p>
                     <h3 className="result-block__stat">Total Jobs</h3>
-                    <p className="result-block__result">2,201</p>
+                    <p className="result-block__result"></p>
                     <h3 className="result-block__stat">Jobs Queried</h3>
-                    <p className="result-block__result">200</p>
+                    <p className="result-block__result"></p>
                     <h3 className="result-block__stat">Biggest State</h3>
-                    <p className="result-block__result">21% in California</p>
+                    <p className="result-block__result"></p>
                     <h3 className="result-block__stat">Biggest City</h3>
-                    <p className="result-block__result">14% in San Francisco</p>
+                    <p className="result-block__result"></p>
                 </div>
-            </div>
+            </div>)}
 
-            <div className="result-block">
+            {results.map((block, i) => (
+                <div className="result-block" key={i}>
                 <div className="result-block__header">
-                    <h2 className="result-block__title">Software Engineer</h2>
+                    <h2 className="result-block__title">{block.searchPhrase}</h2>
                     <label className="result-block__toggle">
                         <input className="result-block__toggle-input" type="checkbox" />
                         <span className="result-block__toggle-slider"></span>
                     </label>
                 </div>
                 <div className="result-block__data">
+                    <h3 className="result-block__stat">Entry Level</h3>
+                    <p className="result-block__result">{block.entryLevel ? `Yes` : `No`}</p>
+                    <h3 className="result-block__stat">Newly Posted</h3>
+                    <p className="result-block__result">{block.newerJobs ? `Yes` : `No`}</p>
                     <h3 className="result-block__stat">Total Jobs</h3>
-                    <p className="result-block__result">6,499</p>
+                    <p className="result-block__result">Todo: Get total from API</p>
                     <h3 className="result-block__stat">Jobs Queried</h3>
-                    <p className="result-block__result">200</p>
+                    <p className="result-block__result">{block.jobsQueried}</p>
                     <h3 className="result-block__stat">Biggest State</h3>
-                    <p className="result-block__result">12% in Washington</p>
+                    <p className="result-block__result">na</p>
                     <h3 className="result-block__stat">Biggest City</h3>
-                    <p className="result-block__result">8% in Seattle</p>
+                    <p className="result-block__result">na</p>
                 </div>
-            </div>
-
-            <div className="result-block">
-                <div className="result-block__header">
-                    <h2 className="result-block__title">Software Engineer</h2>
-                    <label className="result-block__toggle">
-                        <input className="result-block__toggle-input" type="checkbox" />
-                        <span className="result-block__toggle-slider"></span>
-                    </label>
-                </div>
-                <div className="result-block__data">
-                    <h3 className="result-block__stat">Total Jobs</h3>
-                    <p className="result-block__result">6,499</p>
-                    <h3 className="result-block__stat">Jobs Queried</h3>
-                    <p className="result-block__result">200</p>
-                    <h3 className="result-block__stat">Biggest State</h3>
-                    <p className="result-block__result">12% in Washington</p>
-                    <h3 className="result-block__stat">Biggest City</h3>
-                    <p className="result-block__result">8% in Seattle</p>
-                </div>
-            </div>
-
-            <div className="result-block">
-                <div className="result-block__header">
-                    <h2 className="result-block__title">Software Engineer</h2>
-                    <label className="result-block__toggle">
-                        <input className="result-block__toggle-input" type="checkbox" />
-                        <span className="result-block__toggle-slider"></span>
-                    </label>
-                </div>
-                <div className="result-block__data">
-                    <h3 className="result-block__stat">Total Jobs</h3>
-                    <p className="result-block__result">6,499</p>
-                    <h3 className="result-block__stat">Jobs Queried</h3>
-                    <p className="result-block__result">200</p>
-                    <h3 className="result-block__stat">Biggest State</h3>
-                    <p className="result-block__result">12% in Washington</p>
-                    <h3 className="result-block__stat">Biggest City</h3>
-                    <p className="result-block__result">8% in Seattle</p>
-                </div>
-            </div>
-
-            <div className="result-block">
-                <div className="result-block__header">
-                    <h2 className="result-block__title">Software Engineer</h2>
-                    <label className="result-block__toggle">
-                        <input className="result-block__toggle-input" type="checkbox" />
-                        <span className="result-block__toggle-slider"></span>
-                    </label>
-                </div>
-                <div className="result-block__data">
-                    <h3 className="result-block__stat">Total Jobs</h3>
-                    <p className="result-block__result">6,499</p>
-                    <h3 className="result-block__stat">Jobs Queried</h3>
-                    <p className="result-block__result">200</p>
-                    <h3 className="result-block__stat">Biggest State</h3>
-                    <p className="result-block__result">12% in Washington</p>
-                    <h3 className="result-block__stat">Biggest City</h3>
-                    <p className="result-block__result">8% in Seattle</p>
-                </div>
-            </div>
-
-        </div>
+            </div>))}
+        </section>
     );
 }
 

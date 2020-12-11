@@ -17,9 +17,34 @@
 
 .result-block__data {
   display: grid;
+  position: relative;
   grid-template-columns: 42% 58%;
 }
 
+.result-block__loader {
+  display: block;
+  width: 74px;
+  height: 74px;
+  border: 3px solid #ccc;
+  border-bottom-color: #777;
+    
+  border-radius: 50%;
+    
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 0;
+  bottom: 20px;
+  margin: auto;
+  
+  animation: spin 0.9s infinite cubic-bezier(.18,.49,.85,.58);
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
 .result-block__header {
   display: flex;
   width: 100%;
