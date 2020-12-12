@@ -1,6 +1,3 @@
-let test = "https://www.indeed.com/jobs?q=javascript&explvl=entry_level&sort=date&limit=50&fromage=15&radius=25&start=50";
-let test2 = "https://www.indeed.com/jobs?q=react%20engineer&l=Portland%2C%20OR&radius=25&sort=date";
-
 class Api {
     constructor(options) {
         this.options = options;
@@ -8,7 +5,7 @@ class Api {
 
     generateUrl(data) {
         const { what, where, entry, newer } = data;
-        let uri = encodeURI(what); 
+        let uri = encodeURI(what);
         if (where !== "") {
             uri += ("&l=" + encodeURI(where) + "&radius=25");
         }
@@ -21,9 +18,9 @@ class Api {
         return uri;
     }
 
-    getJobs(data) {
+    searchJobs(data) {
         let searchUrl = this.options.baseUrl + this.generateUrl(data) + this.options.baseParams;
-        return fetch(this.options.apiUrl, {
+        return fetch(this.options.searchUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -31,17 +28,34 @@ class Api {
             body: JSON.stringify({ url: searchUrl }),
         })
             .then(res => {
-                if (res.status === 200) {
+                if (res.status === 202) {
                     return res.json();
                 }
             })
     }
+
+    // This is an auto repeating promise that will loop until it resolves correctly
+    // Incorporate a max timeout soon... 
+    getSearchedJobs(jobId) {
+        return new Promise(function repeat(resolve, reject) {
+            fetch("http://localhost:5000/data/" + jobId, {
+                method: 'GET',
+            }).then((res) => {
+                if (res.status === 200) {
+                    resolve(res.json());
+                } else {
+                    setTimeout(() => {repeat(resolve, reject)}, 3000)
+                    }
+                });
+        });
+    }
 }
 
-const api = new Api({ 
-    baseUrl: "https://www.indeed.com/jobs?q=", 
+const api = new Api({
+    baseUrl: "https://www.indeed.com/jobs?q=",
     baseParams: "&sort=date&limit=50",
-    apiUrl: "http://localhost:5000/search"
+    searchUrl: "http://localhost:5000/search",
+    getUrl: "http://localhost:5000/data/",
 });
 
 export default api;

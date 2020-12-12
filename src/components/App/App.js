@@ -20,24 +20,35 @@ class App extends React.Component {
   handleSearch(data) {
     this.setState({ loading: true });
 
-    api.getJobs(data)
+    api.searchJobs(data)
       .then((res) => {
-        this.setState({ activeJobs: res }, this.createJobBlock({ formData: data, res }));
+        const blockId = res.jobId;
+        api.getSearchedJobs(blockId)
+          .then((res) => {
+            this.createJobBlock({ formData: data, res, blockId });
+          })
       });
   }
 
-  createJobBlock({ formData, res }) {
-    const newBlock = new ResultBlock({ formData, res });
-    // newBlock.getJobsQueried();
+  createJobBlock({ formData, res, blockId }) {
+    const newBlock = new ResultBlock({ 
+      formData,
+      blockId,
+      total: res.total,
+      jobs: res.jobs,
+    });
 
-    this.setState({ resultBlocks: [newBlock, ...this.state.resultBlocks], loading: false });
+    // res = { total, jobs }
+    // Set activeJobs to these
+
+    this.setState({ activeJobs: res.jobs, resultBlocks: [newBlock, ...this.state.resultBlocks], loading: false });
   }
 
   render() {
     return (
       <div className="app">
         <Header />
-        <Main handleSearch={this.handleSearch} activeJobs={this.state.activeJobs} results={this.state.resultBlocks} loading={this.state.loading}/>
+        <Main handleSearch={this.handleSearch} activeJobs={this.state.activeJobs} results={this.state.resultBlocks} loading={this.state.loading} />
       </div>
     );
   }

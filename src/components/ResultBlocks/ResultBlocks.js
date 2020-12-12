@@ -35,7 +35,7 @@ function ResultBlocks({ results, loading }) {
                 <div className="result-block__header">
                     <h2 className="result-block__title">{block.searchPhrase}</h2>
                     <label className="result-block__toggle">
-                        <input className="result-block__toggle-input" type="checkbox" />
+                        <input className="result-block__toggle-input" type="checkbox" defaultChecked="true"/>
                         <span className="result-block__toggle-slider"></span>
                     </label>
                 </div>
@@ -45,13 +45,13 @@ function ResultBlocks({ results, loading }) {
                     <h3 className="result-block__stat">Newly Posted</h3>
                     <p className="result-block__result">{block.newerJobs ? `Yes` : `No`}</p>
                     <h3 className="result-block__stat">Total Jobs</h3>
-                    <p className="result-block__result">Todo: Get total from API</p>
+                    <p className="result-block__result">{block.totalJobs}</p>
                     <h3 className="result-block__stat">Jobs Queried</h3>
                     <p className="result-block__result">{block.jobsQueried}</p>
                     <h3 className="result-block__stat">Biggest State</h3>
-                    <p className="result-block__result">na</p>
+                    <p className="result-block__result">{block.getTopState()}</p>
                     <h3 className="result-block__stat">Biggest City</h3>
-                    <p className="result-block__result">na</p>
+                    <p className="result-block__result">{block.getTopCity()}</p>
                 </div>
             </div>))}
         </section>

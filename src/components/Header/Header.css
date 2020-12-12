@@ -12,6 +12,8 @@
   transition: color .2s ease;
   color: #000;
   text-decoration: none;
+  background-color: transparent;
+  border: none;
 }
 
 .header__button:hover {
