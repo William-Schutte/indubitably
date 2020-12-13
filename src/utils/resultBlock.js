@@ -1,12 +1,13 @@
 class ResultBlock {
-  constructor({ formData, res, total, jobs }) {
+  constructor({ formData, blockId, total, jobs }) {
     this.searchPhrase = formData.what;
     this.location = formData.where;
     this.entryLevel = formData.entry;
     this.newerJobs = formData.newer;
-    this.jobData = jobs;
+    this.jobData = this.getAllCoords(jobs);
     this.totalJobs = total;
     this.jobsQueried = jobs.length;
+    this.blockId = blockId;
   }
 
   getTopState() {
@@ -51,6 +52,17 @@ class ResultBlock {
 
     let topPercent = 100 * (max) / this.jobsQueried;
     return `${topPercent}% in ${topCity}`;
+  }
+
+  getAllCoords(jobs) {
+    return jobs.map((job) => {
+      const coordsArray = job.coords[0];
+
+      if (coordsArray === undefined) {
+        return job;
+      }
+      return {...job, long: parseFloat(coordsArray[3]), lat: parseFloat(coordsArray[2]) };
+    })
   }
 }
 

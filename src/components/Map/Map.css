@@ -5,8 +5,20 @@
   border: 1px solid #6B6B6B;
   box-sizing: border-box;
   grid-area: map;
+  position: relative;
 }
 
 .map__outline {
   width: 100%;
+}
+
+.map__pixel {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 4px;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  background-color: #0A4097;
 }

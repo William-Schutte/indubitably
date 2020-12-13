@@ -4,6 +4,14 @@ import './ResultBlocks.css'
 function ResultBlocks({ results, loading }) {
     return (
         <section className="result-blocks">
+            {results.length === 0 && (
+                <div className="result-block">
+                    <div className="result-block__header">
+                    <h2 className="result-block__stat">Use the searchbar to find some jobs! Keep in mind it takes about 15 - 20 seconds to complete a request. There are a lot of jobs to find!</h2>
+                    </div>
+                </div>
+            )}
+            
             {loading && (
             <div className="result-block">
                 <div className="result-block__header">
@@ -33,7 +41,7 @@ function ResultBlocks({ results, loading }) {
             {results.map((block, i) => (
                 <div className="result-block" key={i}>
                 <div className="result-block__header">
-                    <h2 className="result-block__title">{block.searchPhrase}</h2>
+                    <h2 className="result-block__title">{block.searchPhrase} in {block.location ? block.location : "the US"}</h2>
                     <label className="result-block__toggle">
                         <input className="result-block__toggle-input" type="checkbox" defaultChecked="true"/>
                         <span className="result-block__toggle-slider"></span>

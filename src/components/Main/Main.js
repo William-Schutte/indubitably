@@ -10,7 +10,7 @@ const Main = ({ handleSearch, activeJobs, results, loading }) => {
     <main className="main">
         <Search handleSearch={handleSearch}/>
         <section className="main__content">
-          <Map />
+          <Map activeJobs={activeJobs} />
           <JobsList activeJobs={activeJobs} />
           <ResultBlocks results={results} loading={loading} />
         </section>

@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import api from '../../utils/api';
 import ResultBlock from '../../utils/resultBlock';
+import testData from '../../utils/data.json';
 
 import './App.css'
 
@@ -10,7 +11,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      activeJobs: [],
+      activeJobs: testData,
       resultBlocks: [],
       loading: false,
     }
@@ -38,10 +39,8 @@ class App extends React.Component {
       jobs: res.jobs,
     });
 
-    // res = { total, jobs }
-    // Set activeJobs to these
-
-    this.setState({ activeJobs: res.jobs, resultBlocks: [newBlock, ...this.state.resultBlocks], loading: false });
+    
+    this.setState({ activeJobs: newBlock.jobData, resultBlocks: [newBlock, ...this.state.resultBlocks], loading: false });
   }
 
   render() {

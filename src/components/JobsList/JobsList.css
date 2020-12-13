@@ -1,22 +1,42 @@
 .jobs-list {
   grid-area: list;
   height: 100%;
-  padding: 8px 16px 16px;
+  max-height: calc(100vh - 2rem);
+  padding: 0;
   box-sizing: border-box;
   border: 1px solid #6b6b6b;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   overflow: scroll;
+  position: relative;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.2);
 }
+
+.jobs-list__header {
+  display: flex;
+  width: 100%;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  padding: .75rem 1.25rem;
+  box-sizing: border-box;
+  background-color: #ddd;
+  border-bottom: 1px solid #6b6b6b;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+}
+
+
 
 .jobs-list__item {
   width: 100%;
-  padding: 4px 0;
+  padding: .75rem 1.25rem .75rem;
+  box-sizing: border-box;
   display: flex;
   color: #000;
   text-decoration: none;
   transition: .3s ease;
+  border-bottom: 1px solid #6b6b6b;
 }
 
 .jobs-list__item:hover {
@@ -42,8 +62,8 @@
 }
 
 .jobs-list__loc {
-  font-size: 14px;
-  width: 15%;
+  font-size: 12px;
+  width: 20%;
   overflow: hidden;
   margin: auto 0;
   white-space: nowrap;
@@ -51,21 +71,28 @@
 }
 
 .jobs-list__name {
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 16px;
   font-weight: 700;
   margin-right: 4px;
-  width: 55%;
+  width: 50%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .jobs-list__salary {
-  font-size: 14px;
-  width: 25%;
+  font-size: 12px;
+  width: 22%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: auto 0;
+}
+
+.jobs-list__title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  background: none;
 }

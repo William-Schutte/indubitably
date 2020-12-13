@@ -4,18 +4,28 @@ import './Search.css';
 
 export default function Search(props) {
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
+
+    function resetForm() {
+        reset({ what: "", where: "", entry: false, newer: false });
+    }
 
     function onSubmit(data) {
         console.log(data)
-        props.handleSearch(data);
+        if (data.what === "") {
+            return
+        } else {
+            props.handleSearch(data);
+            resetForm();
+        }
+        
     }
     
     return (
         <section className="search">
             <div className="search__text">
                 <label className="search__label">What</label>
-                <input className="search__input" ref={register} name="what" placeholder="Job title, keywords, etc"></input>
+                <input className="search__input" ref={register({ required: true })} name="what" placeholder="Job title, keywords, etc" required></input>
             </div>
             <div className="search__text">
                 <label className="search__label">Where</label>
