@@ -1,16 +1,17 @@
 import React from 'react';
 import './Map.css';
-// import usMap from '../../images/calibrate.gif';
-import usMap from '../../images/us-mercator.jpg';
-// import usMap from '../../images/US-black.svg';
+import usMap from '../../images/us-mercator.png';
 
 function Map({ activeJobs }) {
     
     function mapCoords(long, lat) {
-        const x = `${100*(1 - (long - (-64.5)) / (-127 - (-64.5)))}%`;
-        const y = `${8.4+92*(1 - (lat - 19.9) / (50 - 19.9))}%`;
+        // Due to the mercator projection being a liner representation of radial coords, it
+        // stretches lattitudes closer to the poles. This factor scales the points to match.
+        const radialScalefactor = (1 - ((90 - lat) / 90) ** 2) ** (1/2);
+        const x = `${100*(1 - (long - (-65.4)) / (-125.9 - (-65.4)))}%`;
+        const y = `${radialScalefactor*100*((lat - 23.6) / (48.2 - 23.9))}%`;
 
-        return { top: y, left: x }
+        return { bottom: y, left: x }
     }
 
     return (
@@ -21,10 +22,11 @@ function Map({ activeJobs }) {
                 if (job.lat) {
                     const loc = mapCoords(job.long, job.lat);
                     return (
-                        <i className="map__pixel" key={i} style={loc} />
+                        <i className="map__pixel" key={i} style={loc}>
+                            <p className="map__city">{job.location}</p>
+                        </i>
                     )
                 }
-                return <></>
             })}
         </div>
     );

@@ -6,6 +6,7 @@
   box-sizing: border-box;
   grid-area: map;
   position: relative;
+  cursor: crosshair;
 }
 
 .map__outline {
@@ -14,11 +15,30 @@
 
 .map__pixel {
   position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 4px;
-  opacity: 1;
-  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 5px;
+  bottom: 0;
   left: 0;
-  background-color: #0A4097;
+  background-color: rgba(10,64,151,.6);
+}
+
+.map__city {
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  padding: 6px;
+  border: 1px solid #6b6b6b;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  transition: .3s ease;
+  background-color: rgba(255,255,255,.8);
+  z-index: 10;
+}
+
+.map__pixel:hover > .map__city {
+  visibility: visible;
+  opacity: 1;
 }
