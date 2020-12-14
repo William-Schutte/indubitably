@@ -37,8 +37,9 @@ class Api {
     // This is an auto repeating promise that will loop until it resolves correctly
     // Incorporate a max timeout soon... 
     getSearchedJobs(jobId) {
+        const getUrl = this.getUrl;
         return new Promise(function repeat(resolve, reject) {
-            fetch("http://localhost:5000/data/" + jobId, {
+            fetch(getUrl + jobId, {
                 method: 'GET',
             }).then((res) => {
                 if (res.status === 200) {
@@ -54,8 +55,8 @@ class Api {
 const api = new Api({
     baseUrl: "https://www.indeed.com/jobs?q=",
     baseParams: "&sort=date&limit=50",
-    searchUrl: "http://localhost:5000/search",
-    getUrl: "http://localhost:5000/data/",
+    searchUrl: "http://api.ws-indubitably.com/search",
+    getUrl: "http://api.ws-indubitably.com/data/",
 });
 
 export default api;
