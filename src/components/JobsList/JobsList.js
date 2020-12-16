@@ -1,13 +1,14 @@
 import React from 'react';
 import './JobsList.css'
 
-function JobsList({ activeJobs }) {
+function JobsList({ activeJobs, handleSortData }) {
+
   return (
     <div className="jobs-list">
       <div className="jobs-list__header">
-        <h4 className="jobs-list__name jobs-list__title">Job Title</h4>
-        <p className="jobs-list__loc jobs-list__title">Location</p>
-        <p className="jobs-list__salary jobs-list__title">Salary</p>
+        <button className="jobs-list__name jobs-list__title" onClick={() => {handleSortData("title")}}>Job Title</button>
+        <button className="jobs-list__loc jobs-list__title" onClick={() => {handleSortData("location")}}>Location</button>
+        <button className="jobs-list__salary jobs-list__title" onClick={() => {handleSortData("salary")}}>Salary</button>
         <p className="jobs-list__link jobs-list__title">Link</p>
       </div>
 

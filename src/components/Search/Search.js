@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import './Search.css';
 
-export default function Search(props) {
+export default function Search({ handleSearch, loading }) {
 
     const { register, handleSubmit, reset } = useForm();
 
@@ -11,11 +11,10 @@ export default function Search(props) {
     }
 
     function onSubmit(data) {
-        console.log(data)
         if (data.what === "") {
             return
         } else {
-            props.handleSearch(data);
+            handleSearch(data);
             resetForm();
         }
         
@@ -39,7 +38,7 @@ export default function Search(props) {
                 <input className="search__toggle-input" ref={register} name="newer" type="checkbox" />
                 <span className="search__toggle-text">Newly Posted</span>
             </label>
-            <button className="search__submit" onClick={handleSubmit(onSubmit)}>Find jobs</button>
+            <button className={!loading ? "search__submit" : "search__submit_inactive"} onClick={handleSubmit(onSubmit)}>Find jobs</button>
         </section>
     );
 }

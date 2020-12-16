@@ -1,7 +1,6 @@
 .jobs-list {
   grid-area: list;
   height: 100%;
-  max-height: calc(100vh - 2rem);
   padding: 0;
   box-sizing: border-box;
   border: 1px solid #6b6b6b;
@@ -95,4 +94,16 @@
   line-height: 20px;
   font-weight: 700;
   background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.jobs-list__title:hover {
+  color: #333;
+  /* box-shadow: 0 3px 15px rgba(0,0,0,.5); */
+}
+
+.jobs-list__title:focus {
+  outline: none;
 }

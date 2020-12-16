@@ -20,10 +20,14 @@
   color: #6B6B6B
 }
 
+.header__button:active {
+  outline: none;
+}
+
 .header__button_right {
   margin-left: auto;
 }
 
 .header__logo {
-  margin-right: 80px;
+  margin-right: 40px;
 }

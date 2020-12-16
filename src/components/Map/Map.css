@@ -1,5 +1,6 @@
 .map {
   width: 100%;
+  height: auto;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #6B6B6B;
@@ -7,10 +8,12 @@
   grid-area: map;
   position: relative;
   cursor: crosshair;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.2);
 }
 
 .map__outline {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .map__pixel {
