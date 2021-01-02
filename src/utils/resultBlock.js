@@ -29,7 +29,7 @@ class ResultBlock {
     }
 
     let topPercent = 100 * (max) / this.jobsQueried;
-    return `${topPercent}% in ${topState}`;
+    return `${topPercent.toFixed(1)}% in ${topState}`;
   }
 
   getTopCity() {
@@ -51,7 +51,7 @@ class ResultBlock {
     }
 
     let topPercent = 100 * (max) / this.jobsQueried;
-    return `${topPercent}% in ${topCity}`;
+    return `${topPercent.toFixed(1)}% in ${topCity}`;
   }
 
   getAllCoords(jobs) {

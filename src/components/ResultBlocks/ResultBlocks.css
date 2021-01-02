@@ -1,8 +1,8 @@
 .result-blocks {
   grid-area: blocks;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  height: 100%;
+  /* height: 100%; */
   overflow: scroll;
 }
 

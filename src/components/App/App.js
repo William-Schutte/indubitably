@@ -7,7 +7,6 @@ import Footer from '../Footer/Footer';
 
 import './App.css'
 
-
 class App extends React.Component {
   constructor() {
     super();
