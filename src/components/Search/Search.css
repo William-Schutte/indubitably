@@ -7,6 +7,11 @@
   align-self: center;
 }
 
+.search_inactive {
+  color: #6B6B6B;
+  cursor: progress;
+}
+
 .search__text {
   display: flex;
   width: 350px;
@@ -22,6 +27,7 @@
   border: none;
   width: 100%;
   border-radius: inherit;
+  cursor: inherit;
 }
 
 .search__input:focus {
@@ -32,6 +38,7 @@
   font-weight: 700;
   margin: 0 10px;
   padding: 13px 0;
+  cursor: inherit;
 }
 
 .search__text:focus-within {
@@ -40,7 +47,12 @@
 }
 
 .search__toggle {
-   height: 42px; 
+   height: 42px;
+   cursor: pointer;
+}
+
+.search__toggle_inactive {
+  cursor: progress;
 }
 
 .search__toggle-input {

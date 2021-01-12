@@ -8,13 +8,17 @@ import './Main.css'
 const Main = ({ handleSearch, handleSortData, activeJobs, results, loading }) => {
   return (
     <main className="main">
-        <Search handleSearch={handleSearch} loading={loading} />
-        <section className="main__content">
+      <Search handleSearch={handleSearch} loading={loading} />
+      <section className="main__content">
+        <div className="main__left-col">
           <Map activeJobs={activeJobs} />
           <JobsList activeJobs={activeJobs} handleSortData={handleSortData} />
+        </div>
+        <div className="main__right-col">
           <ResultBlocks results={results} loading={loading} />
-        </section>
-      </main>
+        </div>
+      </section>
+    </main>
   )
 }
 

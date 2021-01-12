@@ -1,6 +1,4 @@
 .jobs-list {
-  grid-area: list;
-  height: 100%;
   padding: 0;
   box-sizing: border-box;
   border: 1px solid #6b6b6b;
@@ -24,8 +22,6 @@
   border-bottom: 1px solid #6b6b6b;
   box-shadow: 0 3px 15px rgba(0,0,0,0.2);
 }
-
-
 
 .jobs-list__item {
   width: 100%;

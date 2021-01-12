@@ -2,15 +2,14 @@
   width: 100%;
   display: flex;
   height: min-content;
-  /* max-height: min-content; */
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #6B6B6B;
   box-sizing: border-box;
-  grid-area: map;
   position: relative;
   cursor: crosshair;
   box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+  margin-bottom: 1.5rem;
 }
 
 .map__outline {
