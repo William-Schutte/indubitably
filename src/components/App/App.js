@@ -1,11 +1,18 @@
 import React from 'react';
+import { createStore } from 'redux';
+import allReducers from '../../reducers';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import api from '../../utils/api';
 import ResultBlock from '../../utils/resultBlock';
 import Footer from '../Footer/Footer';
-
 import './App.css'
+
+// STORE, the global state for Redux
+const jobsStore = createStore(allReducers);
+
+// DISPATCH, sends changes to STORE
+// jobsStore.dispatch(addJobs());
 
 class App extends React.Component {
   constructor() {
