@@ -15,7 +15,7 @@ function ResultBlocks({ results, loading }) {
             {loading && (
             <div className="result-block">
                 <div className="result-block__header">
-                    <h2 className="result-block__title">Loading Job Data</h2>
+                    <h2 className="result-block__title">Fetching Job Data</h2>
                     <label className="result-block__toggle">
                         <input className="result-block__toggle-input" type="checkbox" />
                         <span className="result-block__toggle-slider"></span>
