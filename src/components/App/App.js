@@ -23,9 +23,10 @@ class App extends React.Component {
       activeJobs: [],
       resultBlocks: [],
       loading: false,
-      citiesData: []
+      citiesData: coolList,
     }
     this.handleSearch = this.handleSearch.bind(this);
+    this.getJobMainCity = this.getJobMainCity.bind(this);
     this.createJobBlock = this.createJobBlock.bind(this);
     this.handleSortData = this.handleSortData.bind(this);
     this.handleResetData = this.handleResetData.bind(this);
@@ -56,9 +57,10 @@ class App extends React.Component {
       let r = coolList[i][4] / 60;
       let deltaLat = Math.abs(jobLat - cityLat);
       let deltaLong = Math.abs(jobLong - cityLong);
-      
+
       if ((deltaLat < r) && (deltaLong < r)) {
         if (Math.sqrt(deltaLat * deltaLat + deltaLong * deltaLong) < (r * r)) {
+          this.state.citiesData[i][4].count += 1;
           return coolList[i].slice(0,4);
         }
       }
