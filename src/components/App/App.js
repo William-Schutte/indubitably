@@ -8,6 +8,8 @@ import ResultBlock from '../../utils/resultBlock';
 import Footer from '../Footer/Footer';
 import './App.css'
 
+import { coolList } from '../../utils/selectcities';
+
 // STORE, the global state for Redux
 const jobsStore = createStore(allReducers);
 
@@ -21,6 +23,7 @@ class App extends React.Component {
       activeJobs: [],
       resultBlocks: [],
       loading: false,
+      citiesData: []
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.createJobBlock = this.createJobBlock.bind(this);
@@ -41,14 +44,48 @@ class App extends React.Component {
       });
   }
 
+  getJobMainCity(job) {
+    // Take a job and its coords [City, ST, Lat, Long]
+    let jobLat = job[2];
+    let jobLong = job[3];
+
+    // Compare to each coolCity [City, ST, Lat, Long, Radius]
+    for (let i = 0; i < coolList.length; i++) {
+      let cityLat = coolList[i][2];
+      let cityLong = coolList[i][3];
+      let r = coolList[i][4] / 60;
+      let deltaLat = Math.abs(jobLat - cityLat);
+      let deltaLong = Math.abs(jobLong - cityLong);
+      
+      if ((deltaLat < r) && (deltaLong < r)) {
+        if (Math.sqrt(deltaLat * deltaLat + deltaLong * deltaLong) < (r * r)) {
+          return coolList[i].slice(0,4);
+        }
+      }
+    }
+
+    return job;
+  }
+
   createJobBlock({ formData, res, blockId }) {
-    console.log(res.jobs[0])
+
+    let newJobs = res.jobs.map(job => {
+      if (job.coords.length > 0) {
+        console.log(job.coords);
+        job.coords = this.getJobMainCity(job.coords[0]);
+      } else {
+        job.coords = [];
+      }
+      return job;
+    });
+
     const newBlock = new ResultBlock({
       formData,
       blockId,
       total: res.total,
-      jobs: res.jobs,
+      jobs: newJobs,
     });
+
     this.setState({
       activeJobs: [...newBlock.jobData, ...this.state.activeJobs],
       resultBlocks: [newBlock, ...this.state.resultBlocks],
@@ -93,20 +130,20 @@ class App extends React.Component {
         break;
       }
 
-     case "salary": {
-      const newActiveJobs = this.state.activeJobs.sort((i, j) => {
-        if (i[sortType] > j[sortType]) {
-          return -1;
-        } else if (i[sortType] < j[sortType]) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-      this.setState({ activeJobs: newActiveJobs })
-      break;
-     }
-     default: {}
+      case "salary": {
+        const newActiveJobs = this.state.activeJobs.sort((i, j) => {
+          if (i[sortType] > j[sortType]) {
+            return -1;
+          } else if (i[sortType] < j[sortType]) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        this.setState({ activeJobs: newActiveJobs })
+        break;
+      }
+      default: { }
     }
   }
 

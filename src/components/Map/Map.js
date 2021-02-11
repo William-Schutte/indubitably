@@ -10,8 +10,7 @@ function Map({ activeJobs }) {
         const radialScalefactor = (1 - ((90 - lat) / 90) ** 2) ** (1/2);
         const x = `${100*(1 - (long - (-65.4)) / (-125.9 - (-65.4)))}%`;
         const y = `${radialScalefactor*100*((lat - 23.6) / (48.2 - 23.9))}%`;
-
-        return { bottom: y, left: x }
+        return { bottom: y, left: x };
     }
 
     return (

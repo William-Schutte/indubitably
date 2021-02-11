@@ -25,6 +25,11 @@
   bottom: 0;
   left: 0;
   background-color: rgba(10,64,151,.6);
+  transition: .3s ease;
+}
+
+.map__pixel:hover {
+  transform: scale(1.6);
 }
 
 .map__city {

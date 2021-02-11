@@ -56,7 +56,7 @@ class ResultBlock {
 
   getAllCoords(jobs) {
     return jobs.map((job) => {
-      const coordsArray = job.coords[0];
+      const coordsArray = job.coords;
 
       if (coordsArray === undefined) {
         return job;
