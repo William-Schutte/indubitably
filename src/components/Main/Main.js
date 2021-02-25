@@ -5,13 +5,13 @@ import JobsList from '../JobsList/JobsList'
 import ResultBlocks from '../ResultBlocks/ResultBlocks'
 import './Main.css'
 
-const Main = ({ handleSearch, handleSortData, activeJobs, results, loading }) => {
+const Main = ({ handleSearch, handleSortData, activeJobs, citiesJobs, results, loading }) => {
   return (
     <main className="main">
       <Search handleSearch={handleSearch} loading={loading} />
       <section className="main__content">
         <div className="main__left-col">
-          <Map activeJobs={activeJobs} />
+          <Map activeJobs={activeJobs} citiesJobs={citiesJobs}/>
           <JobsList activeJobs={activeJobs} handleSortData={handleSortData} />
         </div>
         <div className="main__right-col">

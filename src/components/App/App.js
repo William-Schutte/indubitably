@@ -61,10 +61,10 @@ class App extends React.Component {
       if ((deltaLat < r) && (deltaLong < r)) {
         if (Math.sqrt(deltaLat * deltaLat + deltaLong * deltaLong) < (r * r)) {
           // If the city 
-          // citiesData[i][4].count += 1
-          // this.setState((state) => {
-          //   return { citiesData: };
-          // });
+          let newCityCount = this.state.citiesData;
+          newCityCount[i][5].count += 1;
+          this.setState({ citiesData: newCityCount });
+
           return coolList[i].slice(0,4);
         }
       }
@@ -85,6 +85,7 @@ class App extends React.Component {
       return job;
     });
 
+    console.log(this.state.citiesData);
     const newBlock = new ResultBlock({
       formData,
       blockId,
@@ -165,6 +166,7 @@ class App extends React.Component {
           handleSearch={this.handleSearch}
           handleSortData={this.handleSortData}
           activeJobs={this.state.activeJobs}
+          citiesJobs={this.state.citiesData}
           results={this.state.resultBlocks}
           loading={this.state.loading} />
         <Footer />
