@@ -60,7 +60,11 @@ class App extends React.Component {
 
       if ((deltaLat < r) && (deltaLong < r)) {
         if (Math.sqrt(deltaLat * deltaLat + deltaLong * deltaLong) < (r * r)) {
-          this.state.citiesData[i][4].count += 1;
+          // If the city 
+          // citiesData[i][4].count += 1
+          // this.setState((state) => {
+          //   return { citiesData: };
+          // });
           return coolList[i].slice(0,4);
         }
       }
