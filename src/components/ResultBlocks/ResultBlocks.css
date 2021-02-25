@@ -17,7 +17,7 @@
 .result-block__data {
   display: grid;
   position: relative;
-  grid-template-columns: 42% 58%;
+  grid-template-columns: 130px auto;
 }
 
 .result-block__loader {

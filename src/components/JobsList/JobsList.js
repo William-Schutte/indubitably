@@ -2,8 +2,6 @@ import React from 'react';
 import './JobsList.css'
 
 function JobsList({ activeJobs, handleSortData }) {
-  console.log(activeJobs[0]);
-
   return (
     <div className="jobs-list">
       <div className="jobs-list__header">

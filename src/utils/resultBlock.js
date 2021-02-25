@@ -13,7 +13,9 @@ class ResultBlock {
   getTopState() {
     let allStates = [];
     this.jobData.forEach((job) => {
-      allStates.push(job.location.slice(-2));
+      if (job.coords[1] !== undefined) {
+        allStates.push(job.coords[1]);
+      }
     });
 
     allStates = allStates.sort();
@@ -35,7 +37,9 @@ class ResultBlock {
   getTopCity() {
     let allCities = [];
     this.jobData.forEach((job) => {
-      allCities.push(job.location);
+      if (job.coords[0] !== undefined) {
+        allCities.push(job.coords[0]);
+      }
     });
 
     allCities = allCities.sort();

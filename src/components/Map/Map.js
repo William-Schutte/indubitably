@@ -16,8 +16,9 @@ function Map({ activeJobs, citiesJobs }) {
   }
 
   function getCitySize(cityData) {
-    const radius = (cityData * 5).toString() + "px";
-    return { width: radius, height: radius };
+    const radius = cityData * 2 + 2;
+    const size = radius.toString() + "px";
+    return { width: size, height: size };
   }
 
   return (
@@ -30,16 +31,15 @@ function Map({ activeJobs, citiesJobs }) {
         </label>
       </div>
 
-
-
       {!heatMapActive ? (
         (activeJobs.length !== 0) && activeJobs.map((job, i) => {
           if (job.lat) {
             const loc = mapCoords(job.long, job.lat);
             return (
-              <i className="map__pixel" key={i} style={loc}>
+              <>
+                <i className="map__pixel" key={i} style={loc} />
                 <p className="map__city">{job.location}</p>
-              </i>
+              </>
             )
           }
         })) :
@@ -47,14 +47,17 @@ function Map({ activeJobs, citiesJobs }) {
           const loc = mapCoords(city[3], city[2]);
           const size = getCitySize(city[5].count);
           const styles = { ...loc, ...size };
-
           return (
-            <i className="map__pixel" key={i} style={styles}>
-              <p className="map__city">{city[0]}</p>
-            </i>
+            <>
+              <i className="map__pixel" key={i} style={styles}></i>
+              <div className="map__city">
+                <p>{city[0]}</p>
+                <p>{city[5].count} Jobs</p>
+              </div>
+            </>
           )
         }))
-        }
+      }
     </div>
   );
 }

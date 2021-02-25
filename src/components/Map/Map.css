@@ -75,7 +75,7 @@
   left: 0;
   background-color: rgba(10,64,151,.6);
   transition: .3s ease;
-  z-index: 1;
+  z-index: 0;
 }
 
 .map__pixel:hover {
@@ -85,8 +85,8 @@
 
 .map__city {
   position: absolute;
-  top: .5rem;
-  left: .5rem;
+  bottom: .5rem;
+  right: .5rem;
   padding: 6px;
   border: 1px solid #6b6b6b;
   border-radius: 4px;
@@ -94,10 +94,16 @@
   opacity: 0;
   width: max-content;
   transition: .3s ease;
-  background-color: rgba(255,255,255,.8);
-  z-index: 1000;
+  background-color: rgba(255,255,255,1);
+  z-index: 100;
 }
 
+.map__pixel:hover + .map__city {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* For older nested implementation */
 .map__pixel:hover > .map__city {
   visibility: visible;
   opacity: 1;

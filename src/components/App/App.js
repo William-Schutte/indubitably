@@ -77,7 +77,6 @@ class App extends React.Component {
 
     let newJobs = res.jobs.map(job => {
       if (job.coords.length > 0) {
-        console.log(job.coords);
         job.coords = this.getJobMainCity(job.coords[0]);
       } else {
         job.coords = [];
@@ -85,7 +84,6 @@ class App extends React.Component {
       return job;
     });
 
-    console.log(this.state.citiesData);
     const newBlock = new ResultBlock({
       formData,
       blockId,
