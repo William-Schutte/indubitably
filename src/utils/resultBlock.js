@@ -1,73 +1,85 @@
 class ResultBlock {
-  constructor({ formData, blockId, total, jobs }) {
-    this.searchPhrase = formData.what;
-    this.location = formData.where;
-    this.entryLevel = formData.entry;
-    this.newerJobs = formData.newer;
-    this.jobData = this.getAllCoords(jobs);
-    this.totalJobs = total;
-    this.jobsQueried = jobs.length;
-    this.blockId = blockId;
-  }
-
-  getTopState() {
-    let allStates = [];
-    this.jobData.forEach((job) => {
-      if (job.coords[1] !== undefined) {
-        allStates.push(job.coords[1]);
-      }
-    });
-
-    allStates = allStates.sort();
-    let topState = allStates[0];
-    let max = allStates.lastIndexOf(topState) + 1;
-
-    for (let i = max; i < allStates.length; i++) {
-      let m = allStates.lastIndexOf(allStates[i]) - i + 1;
-      if (m > max) {
-        max = m;
-        topState = allStates[i];
-      }
+    constructor({ formData, total, jobs }) {
+        this.formData = formData;
+        this.allJobsData = jobs;
+        this.totalJobsCount = total;
+        this.jobsQueried = jobs.length;
+        // this.blockId = blockId;
     }
 
-    let topPercent = 100 * (max) / this.jobsQueried;
-    return `${topPercent.toFixed(1)}% in ${topState}`;
-  }
-
-  getTopCity() {
-    let allCities = [];
-    this.jobData.forEach((job) => {
-      if (job.coords[0] !== undefined) {
-        allCities.push(job.coords[0]);
-      }
-    });
-
-    allCities = allCities.sort();
-    let topCity = allCities[0];
-    let max = allCities.lastIndexOf(topCity) + 1;
-
-    for (let i = max; i < allCities.length; i++) {
-      let m = allCities.lastIndexOf(allCities[i]) - i + 1;
-      if (m > max) {
-        max = m;
-        topCity = allCities[i];
-      }
+    getRemotePercent() {
+        let remoteCount = 0;
+        this.allJobsData.forEach((job) => {
+            if (job.jobLocation.remote) {
+                remoteCount++;
+            }
+        });
+        const percent = remoteCount / this.jobsQueried * 100;
+        return `${percent.toFixed(1)}% remote`;
     }
 
-    let topPercent = 100 * (max) / this.jobsQueried;
-    return `${topPercent.toFixed(1)}% in ${topCity}`;
-  }
+    getTopState() {
+        const allStates = {};
+        this.allJobsData.forEach((job) => {
+            const state = job.jobLocation.state;
+            if (state) {
+                if (allStates[state]) {
+                    allStates[state] += 1;
+                } else {
+                    allStates[state] = 1;
+                }
+            }
+        });
 
-  getAllCoords(jobs) {
-    return jobs.map((job) => {
-      const coordsArray = job.coords;
+        let maxVal = 0;
+        let maxState = "";
+        for (const [key, value] of Object.entries(allStates)) {
+            if (value > maxVal) {
+                maxVal = value;
+                maxState = key;
+            }
+        }
 
-      if (coordsArray === undefined) {
-        return job;
-      }
-      return {...job, long: parseFloat(coordsArray[3]), lat: parseFloat(coordsArray[2]) };
-    })
-  }
+        const topPercent = 100 * (maxVal) / this.jobsQueried;
+        return `${topPercent.toFixed(1)}% in ${maxState}`;
+    }
+
+    getTopCity() {
+        const allCities = {};
+        this.allJobsData.forEach((job) => {
+            const city = job.jobLocation.city;
+            if (city) {
+                if (allCities[city]) {
+                    allCities[city] += 1;
+                } else {
+                    allCities[city] = 1
+                }
+            }
+        });
+
+        let maxVal = 0;
+        let maxCity = "";
+        for (const [key, value] of Object.entries(allCities)) {
+            if (value > maxVal) {
+                maxVal = value;
+                maxCity = key;
+            }
+        }
+
+        const topPercent = 100 * (maxVal) / this.jobsQueried;
+        return `${topPercent.toFixed(1)}% in ${maxCity}`;
+    }
+
+    getAllCoords(jobs) {
+        return jobs.map((job) => {
+            const coordsArray = job.coords;
+
+            if (coordsArray === undefined) {
+                return job;
+            }
+            return { ...job, long: parseFloat(coordsArray[3]), lat: parseFloat(coordsArray[2]) };
+        })
+    }
 }
 
 export default ResultBlock;
