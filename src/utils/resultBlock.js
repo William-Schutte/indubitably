@@ -4,7 +4,24 @@ class ResultBlock {
         this.allJobsData = jobs;
         this.totalJobsCount = total;
         this.jobsQueried = jobs.length;
-        // this.blockId = blockId;
+        this.active = true;
+        this.selected = false;
+    }
+
+    setActive(state) {
+        this.active = state;
+    }
+
+    isActive() {
+        return this.active;
+    }
+
+    setSelected(state) {
+        this.selected = state;
+    }
+
+    isSelected() {
+        return this.selected;
     }
 
     getRemotePercent() {

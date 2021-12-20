@@ -12,6 +12,7 @@ function Header({ resetData }) {
         <header className="header">
             <img className="header__logo" src={headerLogo} alt="Site Logo" />
             <button className="header__button" onClick={handleReset}>Reset data</button>
+            <a className="header__button" href="http://www.github.com" target="_blank" rel="noreferrer">View on Github</a>
             <a className="header__button header__button_right" href="http://www.wschutte.com" target="_blank" rel="noreferrer">Developer / William Schutte</a>
         </header>
     );

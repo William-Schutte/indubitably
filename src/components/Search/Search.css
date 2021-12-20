@@ -14,8 +14,9 @@
 
 .search__text {
   display: flex;
+  box-sizing: border-box;
   width: 350px;
-  height: 40px;
+  height: 46px;
   margin-right: 10px;
   border: 1px solid #6B6B6B;
   border-radius: 10px;
@@ -36,8 +37,10 @@
 
 .search__label {
   font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
   margin: 0 10px;
-  padding: 13px 0;
+  align-self: center;
   cursor: inherit;
 }
 
@@ -47,8 +50,11 @@
 }
 
 .search__toggle {
-   height: 42px;
-   cursor: pointer;
+  height: 46px;
+  cursor: pointer;
+  background-color: rgb(228, 226, 224);
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
 .search__toggle_inactive {
@@ -59,6 +65,7 @@
   opacity: 0;
   width: 0;
   height: 0;
+  position: absolute;
 }
 
 .search__toggle-input:checked + .search__toggle-text {
@@ -69,34 +76,26 @@
 
 .search__toggle-text {
   display: flex;
-  position: relative;
-  top: -16px;
-  left: 0px;
   width: 110px;
-  height: 42px;
-  margin-right: 10px;
-  background-color: #E5E5E5;
+  height: 100%;
   border-radius: 10px;
   transition: box-shadow .2s ease;
-  font-size: 14px;
-  line-height: 40px;
+  font-size: 12px;
+  align-items: center;
   justify-content: center;
-  align-content: center;
   transition: .2s;
 }
 
 .search__submit {
-  display: flex;
   width: 100px;
-  height: 42px;
+  height: 46px;
   margin-left: auto;
   position: relative;
   background-color: #2557A7;
   color: #FFF;
   border: none;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 39px;
+  font-size: 14px;
   border-radius: 10px;
   transition: .2s ease;
   justify-content: center;
@@ -123,24 +122,13 @@
 }
 
 .search__submit_inactive {
-  display: flex;
-  width: 100px;
-  height: 42px;
-  margin-left: auto;
-  position: relative;
   background-color: #4B4B4B;
   color: #999;
-  border: none;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 39px;
-  border-radius: 10px;
-  transition: .2s ease;
-  justify-content: center;
-  align-content: center;
   cursor: progress;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.2);
 }
+.search__submit_inactive:hover {
+    background-color: #4B4B4B;
+  }
 
 .search__submit_inactive:focus {
   outline: none;

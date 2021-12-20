@@ -24,6 +24,8 @@ class App extends React.Component {
         this.createJobBlock = this.createJobBlock.bind(this);
         this.handleSortData = this.handleSortData.bind(this);
         this.handleResetData = this.handleResetData.bind(this);
+        this.handleResultBlockToggle = this.handleResultBlockToggle.bind(this);
+        this.handleResultBlockSelect = this.handleResultBlockSelect.bind(this);
     }
 
     handleSearch(data) {
@@ -161,6 +163,37 @@ class App extends React.Component {
         this.setState({ activeJobs: [], resultBlocks: [] })
     }
 
+    setNewJobsStateFromResultBlocks(resBlocks) {
+        const newJobsList = [];
+        for (const res of resBlocks) {
+            if (res.isActive()) {
+                newJobsList.push(...res.allJobsData);
+            }
+        }
+        this.setState({ activeJobs: newJobsList });
+    }
+
+    handleResultBlockToggle(state, id) {
+        const resultBlockToToggle = this.state.resultBlocks[id];
+        resultBlockToToggle.setActive(state);
+        const newResultBlocks = this.state.resultBlocks.map((item, i) => {
+            return i === id ? resultBlockToToggle : item;
+        });
+
+        console.log(newResultBlocks);
+        this.setNewJobsStateFromResultBlocks(newResultBlocks);
+        this.setState({ resultBlocks: newResultBlocks });
+    }
+
+    handleResultBlockSelect(state, id) {
+        const resultBlockToSelect = this.state.resultBlocks[id];
+        resultBlockToSelect.setSelected(state);
+        const newResultBlocks = this.state.resultBlocks.map((item, i) => {
+            return i === id ? resultBlockToSelect : item;
+        });
+        this.setState({ resultBlock: newResultBlocks });
+    }
+
     render() {
         return (
             <div className="app">
@@ -168,6 +201,8 @@ class App extends React.Component {
                 <Main
                     handleSearch={this.handleSearch}
                     handleSortData={this.handleSortData}
+                    handleResultBlockToggle={this.handleResultBlockToggle}
+                    handleResultBlockSelect={this.handleResultBlockSelect}
                     activeJobs={this.state.activeJobs}
                     citiesJobs={this.state.citiesData}
                     results={this.state.resultBlocks}

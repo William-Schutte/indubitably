@@ -37,7 +37,7 @@ export default function Search({ handleSearch, loading }) {
                 <input className="search__toggle-input" ref={register} name="newer" type="checkbox" disabled={loading}/>
                 <span className="search__toggle-text">Newly Posted</span>
             </label>
-            <button className={!loading ? "search__submit" : "search__submit_inactive"} onClick={handleSubmit(onSubmit)}>Find jobs</button>
+            <button className={`search__submit ${loading && "search__submit_inactive"}`} onClick={handleSubmit(onSubmit)}>Find jobs</button>
         </section>
     );
 }

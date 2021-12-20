@@ -5,7 +5,7 @@ import JobsList from '../JobsList/JobsList'
 import ResultBlocks from '../ResultBlocks/ResultBlocks'
 import './Main.css'
 
-const Main = ({ handleSearch, handleSortData, activeJobs, citiesJobs, results, loading }) => {
+const Main = ({ handleSearch, handleSortData, handleResultBlockToggle, handleResultBlockSelect, activeJobs, citiesJobs, results, loading }) => {
   return (
     <main className="main">
       <Search handleSearch={handleSearch} loading={loading} />
@@ -15,7 +15,7 @@ const Main = ({ handleSearch, handleSortData, activeJobs, citiesJobs, results, l
           <JobsList activeJobs={activeJobs} handleSortData={handleSortData} />
         </div>
         <div className="main__right-col">
-          <ResultBlocks results={results} loading={loading} />
+          <ResultBlocks results={results} loading={loading} toggle={handleResultBlockToggle} select={handleResultBlockSelect} />
         </div>
       </section>
     </main>

@@ -1,23 +1,31 @@
 .header {
   display: flex;
-  margin: 1.25rem 0 1.5rem;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1rem 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgb(202, 201, 199);
 }
 
 .header__button {
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: inherit;
+  margin-top: auto;
   margin-right: 20px;
+  padding: 0 0 22px;
   align-self: center;
   cursor: pointer;
-  transition: color .2s ease;
-  color: #000;
+  transition: all .1s ease;
+  color: rgb(45, 45, 45);
   text-decoration: none;
   background-color: transparent;
-  border: none;
+  border: 2px solid rgba(0, 0, 0, 0);
 }
 
 .header__button:hover {
-  color: #6B6B6B
+  color: #6B6B6B;
+  border-bottom: 2px solid rgb(37, 87, 167);
 }
 
 .header__button:focus {
@@ -29,5 +37,5 @@
 }
 
 .header__logo {
-  margin-right: 40px;
+  margin: 0 40px 16px 20px;
 }

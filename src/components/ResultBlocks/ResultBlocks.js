@@ -1,7 +1,8 @@
 import React from 'react';
+import ResultBlock from '../../ResultBlock/ResultBlock';
 import './ResultBlocks.css'
 
-function ResultBlocks({ results, loading }) {
+function ResultBlocks({ results, loading, toggle, select }) {
     return (
         <section className="result-blocks">
             {results.length === 0 && (
@@ -23,10 +24,6 @@ function ResultBlocks({ results, loading }) {
                     </div>
                     <div className="result-block__data">
                         <i className="result-block__loader"></i>
-                        <h3 className="result-block__stat">Entry Level</h3>
-                        <p className="result-block__result"></p>
-                        <h3 className="result-block__stat">Newly Posted</h3>
-                        <p className="result-block__result"></p>
                         <h3 className="result-block__stat">Total Jobs</h3>
                         <p className="result-block__result"></p>
                         <h3 className="result-block__stat">Jobs Queried</h3>
@@ -35,36 +32,16 @@ function ResultBlocks({ results, loading }) {
                         <p className="result-block__result"></p>
                         <h3 className="result-block__stat">Biggest City</h3>
                         <p className="result-block__result"></p>
+                        <h3 className="result-block__stat">Entry Level</h3>
+                        <p className="result-block__result"></p>
+                        <h3 className="result-block__stat">Recent</h3>
+                        <p className="result-block__result"></p>
                     </div>
                 </div>)}
 
-            {results.map((block, i) => {
-                const { formData } = block;
-                return (
-                    <div className="result-block" key={i}>
-                        <div className="result-block__header">
-                            <h2 className="result-block__title">{formData.what} in {formData.where ? formData.where : "the US"}</h2>
-                            <label className="result-block__toggle">
-                                <input className="result-block__toggle-input" type="checkbox" defaultChecked="true" />
-                                <span className="result-block__toggle-slider"></span>
-                            </label>
-                        </div>
-                        <div className="result-block__data">
-                            <h3 className="result-block__stat">Entry Level</h3>
-                            <p className="result-block__result">{formData.entryLevel ? `Yes` : `No`}</p>
-                            <h3 className="result-block__stat">Newly Posted</h3>
-                            <p className="result-block__result">{formData.newerJobs ? `Yes` : `No`}</p>
-                            <h3 className="result-block__stat">Total Jobs</h3>
-                            <p className="result-block__result">{block.totalJobsCount}</p>
-                            <h3 className="result-block__stat">Jobs Queried</h3>
-                            <p className="result-block__result">{block.jobsQueried}</p>
-                            <h3 className="result-block__stat">Biggest State</h3>
-                            <p className="result-block__result">{block.getTopState()}</p>
-                            <h3 className="result-block__stat">Biggest City</h3>
-                            <p className="result-block__result">{block.getTopCity()}</p>
-                        </div>
-                    </div>)
-            })}
+            {results.map((block, i) => (
+                <ResultBlock block={block} index={i} toggle={toggle} select={select} />
+            ))}
         </section>
     );
 }
