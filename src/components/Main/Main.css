@@ -1,24 +1,20 @@
 .main {
-  max-width: 1440px;
+  max-width: 1520px;
   margin: 0 auto 2rem;
   display: flex;
   flex-direction: column;
+  /* overflow: scroll; */
 }
 
 .main__content {
   display: flex;
-  height: 100vh;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
   justify-content: center;
 }
 
-.main__left-col {
+.main__row {
   display: flex;
-  flex-direction: column;
-  margin-right: 1.5rem;
-  max-width: 740px;
-}
-
-.main__right-col {
-  display: flex;
-  max-width: 500px;
 }

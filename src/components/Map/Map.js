@@ -22,7 +22,39 @@ function Map({ activeJobs, citiesJobs }) {
 
     return (
         <div className="map">
-            <img className="map__outline" src={usMap} alt="US Jobs Map" />
+            <div className="map__container">
+                <img className="map__outline" src={usMap} alt="US Jobs Map" />
+                <>
+                    {!heatMapActive ? (
+                        (activeJobs.length !== 0) && activeJobs.map((job, i) => {
+                            if (job.jobLocation.longitude) {
+                                const loc = mapCoords(job.jobLocation.latitude, job.jobLocation.longitude);
+                                return (
+                                    <>
+                                        <i className="map__pixel" div key={i} style={loc} />
+                                        <p className="map__city">{`${job.jobLocation[0]}, ${job.jobLocation[1]}`}</p>
+                                    </>
+                                )
+                            }
+                            return null
+                        })) :
+                        ((citiesJobs.length !== 0) && citiesJobs.map((city, i) => {
+                            const loc = mapCoords(city[3], city[2]);
+                            const size = getCitySize(city[5].count);
+                            const styles = { ...loc, ...size };
+                            return (
+                                <>
+                                    <i className="map__pixel" key={i} style={styles}></i>
+                                    <div className="map__city">
+                                        <p>{city[0]}</p>
+                                        <p>{city[5].count} Jobs</p>
+                                    </div>
+                                </>
+                            )
+                        }))
+                    }
+                </>
+            </div>
             <div className="map__switchbox" style={heatMapActive ? { color: `#2557A7` } : {}}>Cool City Heat Map
                 <label className="map__toggle">
                     <input className="map__toggle-input" type="checkbox" checked={heatMapActive} onChange={() => { setHeatMapActive(!heatMapActive) }} />
@@ -30,34 +62,7 @@ function Map({ activeJobs, citiesJobs }) {
                 </label>
             </div>
 
-            {!heatMapActive ? (
-                (activeJobs.length !== 0) && activeJobs.map((job, i) => {
-                    if (job.jobLocation.longitude) {
-                        const loc = mapCoords(job.jobLocation.latitude, job.jobLocation.longitude);
-                        return (
-                            <>
-                                <i className="map__pixel" div key={i} style={loc} />
-                                <p className="map__city">{`${job.jobLocation[0]}, ${job.jobLocation[1]}`}</p>
-                            </>
-                        )
-                    }
-                    return null
-                })) :
-                ((citiesJobs.length !== 0) && citiesJobs.map((city, i) => {
-                    const loc = mapCoords(city[3], city[2]);
-                    const size = getCitySize(city[5].count);
-                    const styles = { ...loc, ...size };
-                    return (
-                        <>
-                            <i className="map__pixel" key={i} style={styles}></i>
-                            <div className="map__city">
-                                <p>{city[0]}</p>
-                                <p>{city[5].count} Jobs</p>
-                            </div>
-                        </>
-                    )
-                }))
-            }
+
         </div>
     );
 }
