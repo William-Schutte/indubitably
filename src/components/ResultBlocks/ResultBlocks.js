@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultBlock from '../../ResultBlock/ResultBlock';
+import ResultBlock from '../ResultBlock/ResultBlock';
 import './ResultBlocks.css'
 
 function ResultBlocks({ results, loading, toggle, select }) {

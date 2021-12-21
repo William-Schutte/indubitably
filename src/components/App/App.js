@@ -26,6 +26,7 @@ class App extends React.Component {
         this.handleResetData = this.handleResetData.bind(this);
         this.handleResultBlockToggle = this.handleResultBlockToggle.bind(this);
         this.handleResultBlockSelect = this.handleResultBlockSelect.bind(this);
+        this.handleDBSearch = this.handleDBSearch.bind(this);
     }
 
     handleSearch(data) {
@@ -38,6 +39,7 @@ class App extends React.Component {
 
 
                 if (res.searchStatus === 'Search Successful') {
+                    
                     this.createJobBlock({ formData: data, jobCount: res.jobCount, searchResults: res.data });
                 }
 
@@ -51,6 +53,15 @@ class App extends React.Component {
                 //         // this.createJobBlock({ formData: data, res, blockId });
                 //     })
             });
+    }
+
+    handleDBSearch() {
+        api.searchDb()
+            .then((res) => {
+                console.log('Search Status:', res.searchStatus);
+                const formData = { what: 'All DB', where: 'All DB' };
+                this.createJobBlock({ formData, jobCount: res.data.length, searchResults: res.data });
+            })
     }
 
     getCitiesData(jobs) {
@@ -201,6 +212,7 @@ class App extends React.Component {
                 <Header resetData={this.handleResetData} />
                 <Main
                     handleSearch={this.handleSearch}
+                    handleDBSearch={this.handleDBSearch}
                     handleSortData={this.handleSortData}
                     handleResultBlockToggle={this.handleResultBlockToggle}
                     handleResultBlockSelect={this.handleResultBlockSelect}

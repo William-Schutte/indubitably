@@ -91,7 +91,7 @@
 .search__submit {
   width: 100px;
   height: 46px;
-  margin-left: auto;
+  margin-left: 14px;
   position: relative;
   background-color: #2557A7;
   color: #FFF;
@@ -104,6 +104,10 @@
   align-content: center;
   cursor: pointer;
   box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+}
+
+.search__submit:first-of-type {
+  margin-left: auto;
 }
 
 .search__submit:hover {

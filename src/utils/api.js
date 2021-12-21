@@ -20,12 +20,45 @@ class Api {
 
     searchJobs(data) {
         const searchUrlwParams = this._generateUrl(data);
-        return fetch(this.options.searchApiUrl, {
+        return fetch(this.options.apiUrls.search, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ url: searchUrlwParams }),
+        })
+            .then(res => {
+                if (res.status === 202) {
+                    return res.json();
+                } else {
+                    return { 'searchStatus': 'Failed' }
+                }
+            })
+    }
+
+    searchDb() {
+        return fetch(this.options.apiUrls.searchDB, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    console.log(res);
+                    return res.json();
+                } else {
+                    return { 'searchStatus': 'Failed' }
+                }
+            })
+    }
+
+    clearDb() {
+        return fetch(this.options.apiUrls.clearDB, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
         })
             .then(res => {
                 if (res.status === 202) {
@@ -82,7 +115,12 @@ class Api {
 const api = new Api({
     baseIndeedUrl: "https://www.indeed.com/jobs?as_and=",
     baseIndeedParams: "&limit=50&sort=date&psf=advsrch&from=advancedsearch",
-    searchApiUrl: "http://localhost:8000/search",
+    apiUrl: "http://localhost:8000/",
+    apiUrls: {
+        search: "http://localhost:8000/search",
+        searchDB: "http://localhost:8000/getdb",
+        clearDB: "http://localhost:8000/cleardb",
+    },
     getUrl: "http://api.ws-indubitably.com/data/",
 });
 
